@@ -67,14 +67,7 @@ with st.form("cert_form"):
     domain = st.selectbox("اختر المحور", domains)
 
     st.markdown("**اختر العنصر:**")
-    # عرض العناصر في شكل جدول مع دوائر اختيار (radio)
-    topic = None
-    cols = st.columns(2)  # قسم العرض إلى عمودين
-    topics = topics_dict[domain]
-    for i, t in enumerate(topics):
-        col = cols[i % 2]
-        if col.radio("", [t] + [""] * (len(topics)-1), index=0 if i==0 else -1, key=f"{domain}_{i}") == t:
-            topic = t
+    topic = st.radio("", topics_dict[domain])
 
     submitted = st.form_submit_button("إضافة")
 
