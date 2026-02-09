@@ -70,7 +70,7 @@ with st.form("cert_form"):
     st.markdown("**اختر العنصر:**")
     topic = st.radio("", topics_dict[domain] )
     st.markdown("**اختر الصعوبة:**")
-    topi = st.radio("", A, B, C )
+    topi = st.radio("", "A", "B", "C" )
 
     submitted = st.form_submit_button("إضافة")
 
@@ -102,6 +102,7 @@ if not df.empty:
         file_name="certifications.csv",
         mime="text/csv"
     )
+
 
 
 
