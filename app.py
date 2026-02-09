@@ -83,8 +83,8 @@ with st.form("cert_form"):
             st.session_state.certifications.append({
                 "الشهادة": certificate_name,
                 "المحور": domain,
-                "العنصر": topic
-                "درجة الصعوبة":topi
+                "العنصر": topic,
+                "درجة الصعوبة": topi
             })
             st.success(f"تمت إضافة: {certificate_name} → {domain} → {topic}")
 
@@ -102,6 +102,7 @@ if not df.empty:
         file_name="certifications.csv",
         mime="text/csv"
     )
+
 
 
 
