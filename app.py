@@ -74,7 +74,11 @@ with st.form("cert_form"):
     domain = st.selectbox("اختر المحور", domains)
 
     st.markdown("**اختر العنصر:**")
-    topic = st.radio("", topics_dict[domain] )
+    topic = st.radio("", "Networking Fundamentals" )
+    topic = st.radio("", "Infrastructure" )
+    topic = st.radio("", "Network Operations" )
+    topic = st.radio("", "Network Security" )
+    topic = st.radio("", "Network Troubleshooting" )
     st.markdown("**اختر الصعوبة:**")
     topi = st.radio("", doma )
 
@@ -108,6 +112,7 @@ if not df.empty:
         file_name="certifications.csv",
         mime="text/csv"
     )
+
 
 
 
