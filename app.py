@@ -65,12 +65,24 @@ st.header("إضافة شهادة جديدة")
 with st.form("cert_form"):
     certificate_name = st.text_input("اسم الشهادة")
     domain = st.selectbox("اختر المحور", domains)
-    topic = st.selectbox("اختر العنصر", topics_dict[domain])
+
+    st.markdown("**اختر العنصر:**")
+    # عرض العناصر في شكل جدول مع دوائر اختيار (radio)
+    topic = None
+    cols = st.columns(2)  # قسم العرض إلى عمودين
+    topics = topics_dict[domain]
+    for i, t in enumerate(topics):
+        col = cols[i % 2]
+        if col.radio("", [t] + [""] * (len(topics)-1), index=0 if i==0 else -1, key=f"{domain}_{i}") == t:
+            topic = t
+
     submitted = st.form_submit_button("إضافة")
 
     if submitted:
         if certificate_name.strip() == "":
             st.warning("يرجى إدخال اسم الشهادة قبل الإضافة.")
+        elif not topic:
+            st.warning("يرجى اختيار عنصر من المحور.")
         else:
             st.session_state.certifications.append({
                 "الشهادة": certificate_name,
@@ -82,7 +94,6 @@ with st.form("cert_form"):
 # --- عرض البيانات ---
 st.header("البيانات المخزنة")
 df = pd.DataFrame(st.session_state.certifications)
-
 st.dataframe(df, use_container_width=True)
 
 # --- زر لتحميل الملف ---
@@ -94,3 +105,5 @@ if not df.empty:
         file_name="certifications.csv",
         mime="text/csv"
     )
+
+
