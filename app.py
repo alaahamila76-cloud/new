@@ -67,7 +67,7 @@ Network Troubleshooting: [
     "Performance and Traffic Analysis Tools (Wireshark, SNMP Monitors, Flow Analyzers)",
     "Cable and Hardware Testing Tools (Cable Testers, TDR, OTDR, Multimeter)"
 ]
-}
+
 
 # --- قائمة لتخزين البيانات في الجلسة ---
 if "certifications" not in st.session_state:
@@ -118,6 +118,7 @@ if not df.empty:
         file_name="certifications.csv",
         mime="text/csv"
     )
+
 
 
 
