@@ -68,7 +68,9 @@ with st.form("cert_form"):
     domain = st.selectbox("اختر المحور", domains)
 
     st.markdown("**اختر العنصر:**")
-    topic = st.radio("", topics_dict[domain], )
+    topic = st.radio("", topics_dict[domain] )
+    st.markdown("**اختر الصعوبة:**")
+    topi = st.radio("", A, B, C )
 
     submitted = st.form_submit_button("إضافة")
 
@@ -82,6 +84,7 @@ with st.form("cert_form"):
                 "الشهادة": certificate_name,
                 "المحور": domain,
                 "العنصر": topic
+                "درجة الصعوبة":topi
             })
             st.success(f"تمت إضافة: {certificate_name} → {domain} → {topic}")
 
@@ -99,6 +102,7 @@ if not df.empty:
         file_name="certifications.csv",
         mime="text/csv"
     )
+
 
 
 
